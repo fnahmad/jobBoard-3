@@ -22,6 +22,7 @@ class WorkController extends Controller{
 
 	public function store(Request $request) {
 
+
 		$this->validate($request, [
 			'title'         => 'required|string|max:255',
 			'working_time'  => 'required|string',
@@ -42,16 +43,21 @@ class WorkController extends Controller{
 		$work->fill($request->all());
 		$work->save();
 
+
 		$skills = $request->input('skills');
 		if($skills[0]) {
 			$skills   = explode(',', $skills[0]);
 			$skillsId = [];
 			foreach($skills as $skill) {
 				$s = Skill::where('name', $skill)->first();
+				if( ! $s) {
+					$s       = new Skill();
+					$s->name = ucfirst($skill);
+					$s->save();
+				}
 				array_push($skillsId, $s->id);
 
 			}
-
 			// link skills to the work
 			$work->skills()->sync($skillsId);
 			$work->save();

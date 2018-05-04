@@ -1,7 +1,7 @@
 <template>
     <div class="form-group">
         <label>Compétances</label>
-        <v-select multiple v-model="selected" :options="options" :closeOnSelect="false"></v-select>
+        <v-select multiple taggable v-model="selected" :options="options" :closeOnSelect="false"></v-select>
         <input type="text" v-model="selected" name="skills[]" hidden>
     </div>
 </template>
