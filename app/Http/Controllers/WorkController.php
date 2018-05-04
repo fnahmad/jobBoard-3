@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Work;
+use App\Skill;
 use Illuminate\Http\Request;
 
 class WorkController extends Controller{
@@ -12,7 +13,10 @@ class WorkController extends Controller{
 	}
 
 	public function create() {
-		return view('works.create');
+
+		$skills = Skill::all()->pluck('name');
+
+		return view('works.create')->with(['skills' => $skills]);
 
 	}
 
@@ -33,9 +37,25 @@ class WorkController extends Controller{
 			'people'        => 'required|integer|min:1'
 		]);
 
+
 		$work = new Work();
 		$work->fill($request->all());
 		$work->save();
+
+		$skills = $request->input('skills');
+		if($skills[0]) {
+			$skills   = explode(',', $skills[0]);
+			$skillsId = [];
+			foreach($skills as $skill) {
+				$s = Skill::where('name', $skill)->first();
+				array_push($skillsId, $s->id);
+
+			}
+
+			// link skills to the work
+			$work->skills()->sync($skillsId);
+			$work->save();
+		}
 
 		\Session::flash('message', 'Offre ajoutée avec succès');
 		\Session::flash('alert-class', 'success');

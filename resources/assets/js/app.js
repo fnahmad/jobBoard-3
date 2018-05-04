@@ -15,6 +15,12 @@ import InstantSearch from 'vue-instantsearch';
 
 window.Vue.use(InstantSearch);
 
+import Vue from 'vue'
+import vSelect from './components/SelectSkills.vue'
+
+Vue.component('v-select', vSelect);
+
+
 
 Vue.component('app', require('./components/app.vue'));
 

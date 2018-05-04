@@ -7,7 +7,7 @@
 
           </div>
           <div class="card__infos">
-            <h3>{{ result.name }}</h3>
+            <h3>{{ result.title }}</h3>
             <p>{{ result.content }}</p>
             <result-date :start="result.start_at" :end="result.end_at"></result-date>
           </div>

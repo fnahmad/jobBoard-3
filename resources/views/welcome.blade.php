@@ -12,9 +12,8 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     </head>
     <body>
-       <div id="app">
-            <app index="{{ env('SCOUT_PREFIX') }}" secret="{{ env('ALGOLIA_SECRET') }}" id="{{ env('ALGOLIA_APP_ID') }}"/>
-       </div>
-       <script src="./js/app.js"></script>
+    <h1>Welcome</h1>
+    <a href="{{ route('login') }}">Login</a>
+    <a href="{{ route('register') }}">Register</a>
     </body>
 </html>

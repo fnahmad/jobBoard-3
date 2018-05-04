@@ -32,7 +32,7 @@ class Work extends Model{
 	];
 
 	public function skills() {
-		return $this->belongsToMany('App\Skill');
+		return $this->belongsToMany('App\Skill', 'work_skill', 'work_id', 'skill_id');
 	}
 
 	public function users() {

@@ -22,6 +22,7 @@
 				<label for="title">Titre</label>
 				<input type="text" class="form-control" name="title" value="{{ old('title') }}">
 			</div>
+			<v-select :options="{{ $skills }}"></v-select>
 			<div class="form-group">
 				<label for="working_time">Temps de travail estimé</label>
 				<input type="text" class="form-control" name="working_time" value="{{ old('working_time') }}">
@@ -29,7 +30,7 @@
 			<div class="form-group">
 				<label for="skill_level">Niveau demandé (sur 5)</label>
 				<input type="number" min="1" max="5" class="form-control" name="skill_level"
-				       value="{{ old('skill_level') }}" placeholder="4">
+				       value="{{ old('skill_level') }}">
 			</div>
 			<div class="form-group">
 				<label for="people">Nombre de personne estimé</label>
