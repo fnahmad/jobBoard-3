@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+	return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/confirm-account/{token}', 'UserController@verify');
+
+
+Route::group(['prefix' => 'offers', 'middleware' => ['verifyUserInformations']], function() {
+	Route::get('/', 'HomeController@index')->name('home');
+});
+
+Route::group(['prefix' => 'skills', 'middleware' => ['verifyUserInformations']], function() {
+	Route::post('/', 'HomeController@index')->name('home');
 });
