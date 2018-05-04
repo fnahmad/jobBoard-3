@@ -21,9 +21,15 @@ Route::get('/confirm-account/{token}', 'UserController@verify');
 
 
 Route::group(['prefix' => 'offers', 'middleware' => ['verifyUserInformations']], function() {
-	Route::get('/', 'HomeController@index')->name('home');
+	Route::get('/', 'WorkController@index')->name('offers.index');
+	Route::get('/new', 'WorkController@create')->name('offers.create');
+	Route::post('/new', 'WorkController@store')->name('offers.store');
 });
 
 Route::group(['prefix' => 'skills', 'middleware' => ['verifyUserInformations']], function() {
-	Route::post('/', 'HomeController@index')->name('home');
+	Route::get('/', 'SkillController@index')->name('home');
+});
+Route::group(['prefix' => 'user', 'middleware' => ['verifyUserInformations']], function() {
+	Route::get('/', 'UserController@index')->name('user.index');
+	Route::post('/', 'UserController@update')->name('user.update');
 });
