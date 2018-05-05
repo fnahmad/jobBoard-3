@@ -8,9 +8,13 @@
 
 require('./bootstrap');
 
+import 'normalize.css'
+
+window.moment = require('moment')
+window.moment.locale('fr')
 const mapToFunc = (array, func, args) => {
   array.forEach(element => {
-      func(element, ...args)
+    func(element, ...args)
   });
 }
 
@@ -18,24 +22,24 @@ import 'normalize.css'
 import Vue from 'vue'
 
 // ---- IMPORT GLOBAL COMPONENTS ---- //
-import Root from './components/app.vue'
 import vSelect from './components/SelectSkills.vue'
 import LayoutHelper from './layouts/helper.vue'
 
 // ---- IMPORT PAGES ---- //
-import PageBackoffice from './pages/backoffice'
+import Root from './components/App.vue'
 
 const globalComponents = [
-    // components
-    vSelect, LayoutHelper,
-    // pages
-    Root
+  // components
+  vSelect, LayoutHelper,
+  // pages
+  Root
 ]
 
 // ---- IMPORT GLOBAL PLUGINS ---- //
+import VueClipboard from 'vue-clipboard2'
 import InstantSearch from 'vue-instantsearch';
 
-const plugins = [InstantSearch]
+const plugins = [InstantSearch, VueClipboard]
 // Autoload components
 mapToFunc(globalComponents, (component, vue) => {
   if (component && component.name && vue) {
@@ -45,7 +49,7 @@ mapToFunc(globalComponents, (component, vue) => {
    }
 }, [Vue])
 
-// Autoload plugins
+//Autoload plugins
 mapToFunc(plugins,  (plugin, vue) => {
    if (plugin && vue) {
        vue.use(plugin)

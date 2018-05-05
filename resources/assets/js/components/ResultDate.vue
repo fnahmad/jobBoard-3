@@ -5,13 +5,11 @@
 </template>
 
 <script>
-import moment from 'moment'
-
 export default {
   props: ['start', 'end'],
   methods: {
     formatDate(date) {
-      return moment(date).format('MMM D')
+      return moment(date).format('DD/MM/YY')
     }
   }
 }
