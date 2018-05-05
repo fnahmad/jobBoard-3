@@ -1,6 +1,6 @@
 <template>
-  <div class="search-results">
-    {{formatDate(start)}} - {{formatDate(end)}}
+  <div class="result-date">
+    {{ start ? formatDate(start) : '??' }} - {{ end ? formatDate(end) : '??' }}
   </div>
 </template>
 
@@ -16,7 +16,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  
-</style>

@@ -3,7 +3,8 @@
         <h1 class="search-header__title">
             <ais-stats>
                 <template slot-scope="{ totalResults }">
-                    <strong>{{ totalResults }}</strong>{{ totalResults > 1 ? ' offres' : ' offre' }}</template>
+                    <strong>{{ totalResults }}</strong>{{ totalResults > 1 ? ' offres' : ' offre' }}
+                </template>
             </ais-stats>
         </h1>
         <ais-input placeholder="Rechercher une techno"></ais-input>
