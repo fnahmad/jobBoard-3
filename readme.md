@@ -51,7 +51,7 @@ cp env-example .env
 docker-compose up -d
 docker-compose exec workspace bash
 composer install
-yarn && yarn watch
+yarn && yarn prod
 cp .env.example .env
 php artisan key:generate
 php artisan migrate --seed
