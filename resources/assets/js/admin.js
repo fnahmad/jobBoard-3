@@ -18,8 +18,6 @@ import 'normalize.css'
 import Vue from 'vue'
 
 // ---- IMPORT GLOBAL COMPONENTS ---- //
-import Root from './components/app.vue'
-import vSelect from './components/SelectSkills.vue'
 import LayoutHelper from './layouts/helper.vue'
 
 // ---- IMPORT PAGES ---- //
@@ -27,9 +25,9 @@ import PageBackoffice from './pages/backoffice'
 
 const globalComponents = [
     // components
-    vSelect, LayoutHelper,
+    LayoutHelper,
     // pages
-    Root
+    PageBackoffice,
 ]
 
 // ---- IMPORT GLOBAL PLUGINS ---- //
