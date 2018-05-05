@@ -1,11 +1,16 @@
 <template>
-  <layout as="backoffice">
-    <h1>backoffice</h1>
+  <layout as="backoffice" :props="{route}">
+    <slot />
   </layout>
 </template>
 
 <script>
 export default {
-
+   props: {
+    route: {
+      type: String,
+      default: '/admin'
+    }
+  }
 }
 </script>

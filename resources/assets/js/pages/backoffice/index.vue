@@ -1,5 +1,5 @@
 <template>
-  <v-template>
+  <v-template route="/admin">
     <h1>backoffice</h1>
   </v-template>
 </template>
