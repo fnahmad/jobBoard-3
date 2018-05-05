@@ -50,7 +50,7 @@ cd laradock/
 docker-compose up -d
 docker-compose exec workspace bash
 composer install
-yarn
+yarn && yarn build
 cp .env.example .env
 php artisan key:generate
 php artisan migrate --seed
