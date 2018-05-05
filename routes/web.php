@@ -32,6 +32,8 @@ Route::group(['prefix' => 'offers', 'middleware' => ['verifyUserInformations']],
 
 Route::group(['prefix' => 'admin', 'middleware' => ['verifyUserInformations']], function() {
 	Route::get('/', 'Admin\HomeController@index')->name('admin.index');
+	Route::get('/offers', 'Admin\OffersController@index')->name('admin.offers.index');
+	Route::get('/users', 'Admin\UsersController@index')->name('admin.users.index');
 });
 
 Route::group(['prefix' => 'skills', 'middleware' => ['verifyUserInformations']], function() {
