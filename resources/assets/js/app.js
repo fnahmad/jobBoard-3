@@ -23,6 +23,8 @@ import Vue from 'vue'
 
 // ---- IMPORT GLOBAL COMPONENTS ---- //
 import VueClipboard from 'vue-clipboard2'
+const myVueClipboard = VueClipboard
+myVueClipboard.name = 'vue-clipboard'
 import vSelect from './components/SelectSkills.vue'
 import LayoutHelper from './layouts/helper.vue'
 
@@ -31,7 +33,7 @@ import Root from './components/App.vue'
 
 const globalComponents = [
     // components
-    vSelect, LayoutHelper, VueClipboard,
+    vSelect, LayoutHelper, myVueClipboard,
     // pages
     Root
 ]
