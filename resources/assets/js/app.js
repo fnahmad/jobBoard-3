@@ -12,8 +12,11 @@ import 'normalize.css'
 window.Vue = require('vue');
 
 import InstantSearch from 'vue-instantsearch';
+import VueClipboard from 'vue-clipboard2'
+ 
 
 window.Vue.use(InstantSearch);
+window.Vue.use(VueClipboard)
 
 import Vue from 'vue'
 import vSelect from './components/SelectSkills.vue'
