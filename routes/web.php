@@ -22,6 +22,9 @@ Route::get('/confirm-account/{token}', 'UserController@verify');
 
 Route::group(['prefix' => 'offers', 'middleware' => ['verifyUserInformations']], function() {
 	Route::get('/', 'WorkController@index')->name('offers.index');
+	Route::get('/detail/{slug}', 'WorkController@show')->name('offers.show');
+	Route::get('/edit/{slug}', 'WorkController@edit')->name('offers.edit');
+	Route::post('/edit/{slug}', 'WorkController@update')->name('offers.update');
 	Route::get('/new', 'WorkController@create')->name('offers.create');
 	Route::post('/new', 'WorkController@store')->name('offers.store');
 });
