@@ -49,14 +49,14 @@ mapToFunc(globalComponents, (component, vue) => {
    }
 }, [Vue])
 
-// Autoload plugins
-// mapToFunc(plugins,  (plugin, vue) => {
-//    if (plugin && vue) {
-//        vue.use(plugin)
-//    } else {
-//      throw `check if your import your plugin correctly`
-//    }
-// }, [Vue])
+//Autoload plugins
+mapToFunc(plugins,  (plugin, vue) => {
+   if (plugin && vue) {
+       vue.use(plugin)
+   } else {
+     throw `check if your import your plugin correctly`
+   }
+}, [Vue])
 
 const app = new Vue({
     el: '#app'
