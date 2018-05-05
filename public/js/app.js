@@ -87648,7 +87648,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "SelectSkills",
-	props: ['options'],
+	props: ['options', 'default'],
 	components: {
 		vSelect: __WEBPACK_IMPORTED_MODULE_0_vue_select___default.a
 	},
@@ -87656,6 +87656,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			selected: []
 		};
+	},
+	mounted: function mounted() {
+		this.selected = this.default;
 	}
 });
 

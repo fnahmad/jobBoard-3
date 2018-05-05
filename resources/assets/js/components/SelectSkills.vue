@@ -11,7 +11,7 @@
 
 	export default {
 		name: "SelectSkills",
-		props: ['options'],
+		props: ['options', 'default'],
 		components: {
 			vSelect
 		},
@@ -19,6 +19,9 @@
 			return {
 				selected: []
 			}
+		},
+		mounted() {
+			this.selected = this.default;
 		}
 	}
 </script>

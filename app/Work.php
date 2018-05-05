@@ -28,11 +28,17 @@ class Work extends Model{
 		'is_over',
 		'start_at',
 		'people',
-		'end_at'
+		'end_at',
+		'slug',
+		'user_id'
 	];
 
 	public function skills() {
 		return $this->belongsToMany('App\Skill', 'work_skill', 'work_id', 'skill_id');
+	}
+
+	public function user() {
+		return $this->belongsTo('App\User');
 	}
 
 	public function users() {
