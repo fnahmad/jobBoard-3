@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 let mix = require('laravel-mix');
 
@@ -17,13 +16,12 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
    .js('resources/assets/js/admin.js', 'public/js');
 
-mix.webpackConfig({
-    resolve: {
-        plugins: [
-            new CaseSensitivePathsPlugin(),
-            new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fr/)
-        ]
-    }
-});
+mix.webpackConfig(webpack => ({
+      plugins: [
+        new CaseSensitivePathsPlugin(),
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fr/)
+      ]
+  })
+)
 
 

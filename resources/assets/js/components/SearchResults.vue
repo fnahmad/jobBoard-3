@@ -35,7 +35,6 @@
 
 <script>
 
-import moment from 'moment'
 import ResultDate from './ResultDate'
 import ResultClipboard from './ResultClipboard'
 import ResultPeopleCount from './ResultPeopleCount'
