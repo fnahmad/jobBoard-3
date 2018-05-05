@@ -8,24 +8,17 @@
 require('./bootstrap');
 
 import 'normalize.css'
-
-window.Vue = require('vue');
-
-import InstantSearch from 'vue-instantsearch';
-import VueClipboard from 'vue-clipboard2'
- 
-
-window.Vue.use(InstantSearch);
-window.Vue.use(VueClipboard)
-
 import Vue from 'vue'
+
+// IMPORT GLOBAL COMPONENTS
 import vSelect from './components/SelectSkills.vue'
-
+import Root from './components/app.vue'
 Vue.component('v-select', vSelect);
+Vue.component('app', Root);
 
-
-
-Vue.component('app', require('./components/app.vue'));
+//IMPORT GLOBAL PLUGINS
+import InstantSearch from 'vue-instantsearch';
+Vue.use(InstantSearch);
 
 const app = new Vue({
     el: '#app',
