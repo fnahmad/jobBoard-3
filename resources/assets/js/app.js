@@ -13,8 +13,8 @@ window.Vue = require('vue');
 
 import InstantSearch from 'vue-instantsearch';
 import VueClipboard from 'vue-clipboard2'
- 
-
+window.moment = require('moment')
+window.moment.locale('fr')
 window.Vue.use(InstantSearch);
 window.Vue.use(VueClipboard)
 
