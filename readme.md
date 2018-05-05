@@ -46,7 +46,8 @@ php artisan key:generate
 ```
 git clone  git@github.com:etifontaine/jobBoard.git
 cd jobBoard
-cd laradock/
+cd docker/
+cp env-example .env
 docker-compose up -d
 docker-compose exec workspace bash
 composer install
