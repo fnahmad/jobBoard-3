@@ -37,7 +37,7 @@ const globalComponents = [
 ]
 
 // ---- IMPORT GLOBAL PLUGINS ---- //
-// import InstantSearch from 'vue-instantsearch';
+import InstantSearch from 'vue-instantsearch';
 
 const plugins = [InstantSearch]
 // Autoload components
