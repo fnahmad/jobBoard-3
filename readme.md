@@ -21,7 +21,7 @@ What things you need to install the software and how to install them
 
 ```
 - Docker
-- docker-compose
+- Docker Compose
 ```
 
 
@@ -44,7 +44,7 @@ php artisan key:generate
 #### With Docker
 
 ```
-git clone https://github.com/etifontaine/jobBoard.git
+git clone  git@github.com:etifontaine/jobBoard.git
 cd jobBoard
 cd laradock/
 docker-compose up -d
