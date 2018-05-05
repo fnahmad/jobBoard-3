@@ -19,6 +19,7 @@ import SearchResults from './SearchResults'
 import SearchFilters from './SearchFilters'
 
 export default {
+    name: 'app',
     props: ['index', 'secret', 'id'],
     components: {
         SearchHeader,
