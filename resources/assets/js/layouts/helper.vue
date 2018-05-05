@@ -1,6 +1,6 @@
 <template>
   <section>
-    <component :is="as">
+    <component :is="as" v-bind="props">
       <slot />
     </component>
   </section>
@@ -16,6 +16,10 @@ export default {
     as: {
       type: String,
       default: 'principle'
+    },
+    props: {
+      type: Object,
+      default: () => ({})
     }
   },
    components: { backoffice, principle }
