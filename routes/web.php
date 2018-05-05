@@ -30,7 +30,7 @@ Route::group(['prefix' => 'offers', 'middleware' => ['verifyUserInformations']],
 	Route::get('/delete/{slug}', 'WorkController@delete')->name('offers.delete');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['verifyUserInformations']], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['verifyUserInformations', 'VerifyAdmin']], function() {
 	Route::get('/', 'Admin\HomeController@index')->name('admin.index');
 	Route::get('/offers', 'Admin\OffersController@index')->name('admin.offers.index');
 	Route::get('/users', 'Admin\UsersController@index')->name('admin.users.index');
