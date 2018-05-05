@@ -22,12 +22,16 @@ import LayoutHelper from './layouts/helper.vue'
 
 // ---- IMPORT PAGES ---- //
 import PageBackoffice from './pages/backoffice'
+import PageBoUsers from './pages/backoffice/users'
+import PageBoOffers from './pages/backoffice/offers'
 
 const globalComponents = [
     // components
     LayoutHelper,
     // pages
     PageBackoffice,
+    PageBoOffers,
+    PageBoUsers
 ]
 
 // ---- IMPORT GLOBAL PLUGINS ---- //
