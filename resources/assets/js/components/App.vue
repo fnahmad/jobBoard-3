@@ -46,8 +46,11 @@ export default {
         font-size: 62.5%;
         --white: #ffffff;
         --black: #000000;
+        --grey: #8b8b8b;
+        --light-grey: #cfcfcf;
         --main-font: 'Roboto', Helvetica, sans-serif;
         background: #F2F5F6;
+        font-family: var(--main-font);
     }
 
     *, *::after, *::before{
