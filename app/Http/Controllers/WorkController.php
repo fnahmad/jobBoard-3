@@ -161,22 +161,32 @@ class WorkController extends Controller{
 		return redirect()->route('offers.index');
 	}
 
-	public function delete(Request $request) {
-		$work = Work::find($request->input('id'));
+	public function delete(Request $request, string $slug) {
 
 		try {
-			$work->skills()->delete();
+			$work = Work::where('slug', $slug)->firstOrFail();
+		} catch(ModelNotFoundException $e) {
+			\Session::flash('message', 'Offre non trouvée');
+			\Session::flash('alert-class', 'error');
+
+			return redirect()->route('offers.index');
+		}
+		if($work->user_id !== Auth::id() && ! Auth::user()->is_admin) {
+			\Session::flash('message', 'Vous n\'avez pas les droits');
+			\Session::flash('alert-class', 'error');
+			return redirect()->route('offers.index');
+		}
+		try {
+			$work->skills()->detach();
 			$work->delete();
 		} catch(\Exception $e) {
 			\Session::flash('message', 'Offre non supprimée');
 			\Session::flash('alert-class', 'error');
-
-			return back();
+			return redirect()->route('offers.index');
 		}
-
 		\Session::flash('message', 'Offre supprimée');
 		\Session::flash('alert-class', 'success');
 
-		return back();
+		return redirect()->route('offers.index');
 	}
 }

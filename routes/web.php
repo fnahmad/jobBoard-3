@@ -27,6 +27,7 @@ Route::group(['prefix' => 'offers', 'middleware' => ['verifyUserInformations']],
 	Route::post('/edit/{slug}', 'WorkController@update')->name('offers.update');
 	Route::get('/new', 'WorkController@create')->name('offers.create');
 	Route::post('/new', 'WorkController@store')->name('offers.store');
+	Route::get('/delete/{slug}', 'WorkController@delete')->name('offers.delete');
 });
 
 Route::group(['prefix' => 'skills', 'middleware' => ['verifyUserInformations']], function() {
