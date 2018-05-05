@@ -1,25 +1,59 @@
 
-/**
+/***
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
- */
+ *  
+***/
 
 require('./bootstrap');
 
 import 'normalize.css'
 import Vue from 'vue'
 
-// IMPORT GLOBAL COMPONENTS
-import vSelect from './components/SelectSkills.vue'
-import Root from './components/app.vue'
-Vue.component('v-select', vSelect);
-Vue.component('app', Root);
+const mapToFunc = (array, func, args) => {
+    array.forEach(element => {
+        func(element, ...args)
+    });
+}
 
-//IMPORT GLOBAL PLUGINS
+// ---- IMPORT GLOBAL COMPONENTS ---- //
+import Root from './components/app.vue'
+import vSelect from './components/SelectSkills.vue'
+import LayoutHelper from './layouts/helper.vue'
+
+// ---- IMPORT PAGES ---- //
+import PageBackoffice from './pages/backoffice'
+
+const globalComponents = [
+    // components
+    Root, vSelect, LayoutHelper,
+    // pages
+    PageBackoffice,
+]
+
+// ---- IMPORT GLOBAL PLUGINS ---- //
 import InstantSearch from 'vue-instantsearch';
-Vue.use(InstantSearch);
+
+const plugins = [InstantSearch]
+// Autoload components
+mapToFunc(globalComponents, (component, vue) => {
+  if (component && component.name && vue) {
+    vue.component(component.name, component)
+  } else {
+    throw `check if your component has a name`
+   }
+}, [Vue])
+
+// Autoload plugins
+mapToFunc(plugins,  (plugin, vue) => {
+   if (plugin && vue) {
+       vue.use(plugin)
+   } else {
+     throw `check if your import your plugin correctly`
+   }
+}, [Vue])
 
 const app = new Vue({
-    el: '#app',
+    el: '#app'
 });
