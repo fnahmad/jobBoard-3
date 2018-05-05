@@ -22,9 +22,6 @@ import 'normalize.css'
 import Vue from 'vue'
 
 // ---- IMPORT GLOBAL COMPONENTS ---- //
-import VueClipboard from 'vue-clipboard2'
-const myVueClipboard = VueClipboard
-myVueClipboard.name = 'vue-clipboard'
 import vSelect from './components/SelectSkills.vue'
 import LayoutHelper from './layouts/helper.vue'
 
@@ -32,16 +29,17 @@ import LayoutHelper from './layouts/helper.vue'
 import Root from './components/App.vue'
 
 const globalComponents = [
-    // components
-    vSelect, LayoutHelper, myVueClipboard,
-    // pages
-    Root
+  // components
+  vSelect, LayoutHelper,
+  // pages
+  Root
 ]
 
 // ---- IMPORT GLOBAL PLUGINS ---- //
+import VueClipboard from 'vue-clipboard2'
 import InstantSearch from 'vue-instantsearch';
 
-const plugins = [InstantSearch]
+const plugins = [InstantSearch, VueClipboard]
 // Autoload components
 mapToFunc(globalComponents, (component, vue) => {
   if (component && component.name && vue) {
