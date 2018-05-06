@@ -9,10 +9,6 @@ import VTemplate from './../../templates/back-office-list'
 export default {
   name: 'back-office-users',
   props: {
-    payload: {
-      type: Array,
-      default: () => []
-    },
     algolia: {
       type: Object,
       default: () => ({
