@@ -37,6 +37,6 @@ class User extends Authenticatable{
 	];
 
 	public function jobs() {
-		return $this->hasMany('App\Job');
+		return $this->hasMany('App\Work');
 	}
 }
