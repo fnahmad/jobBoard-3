@@ -43,8 +43,9 @@ window.axios = axios
 
 import Toasted from 'vue-toasted'
 import VueSweetalert2 from 'vue-sweetalert2';
+import VModal from 'vue-js-modal'
 
-const plugins = [Toasted, VueSweetalert2];
+const plugins = [Toasted, VueSweetalert2, VModal];
 // Autoload components
 mapToFunc(
   globalComponents,

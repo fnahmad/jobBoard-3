@@ -1,12 +1,13 @@
 <template>
   <v-template route="/admin/users" v-bind="{ algolia, fields, title, actions }">
-    <h1>Users</h1>
+    <modal />
   </v-template>
 </template>
 
 <script>
 import VTemplate from './../../templates/back-office-list'
 import crudMixin from './../../mixins/crud'
+import modal from './../../components/modals/backoffice/user'
 export default {
   name: 'back-office-users',
   props: {
@@ -31,15 +32,12 @@ export default {
       namespace: 'users',
       title: 'Users',
       actions: [
-        { name: 'edit', func: this._edit },
+        { name: 'edit', func: this._$editHelper },
         { name: 'delete', func: this._$delete },
       ]
     }
   },
-  methods: {
-    _edit (id) { axios.delete(id) },
-  },
-  components: { VTemplate }
+  components: { VTemplate, modal }
 }
 </script>
 
