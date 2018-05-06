@@ -137,6 +137,11 @@ export default {
         padding: 1rem;
       }
       &-td--action {
+        padding-left: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: .9rem;
         cursor: pointer;
         transition: all ease .05s;
         color: #333;
