@@ -37,7 +37,9 @@ const globalComponents = [
 ];
 
 // ---- IMPORT GLOBAL PLUGINS ---- //
-import InstantSearch from "vue-instantsearch";
+// import InstantSearch from "vue-instantsearch";
+import axios from 'axios'
+window.axios = axios
 
 const plugins = [];
 // Autoload components
