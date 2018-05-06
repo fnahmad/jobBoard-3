@@ -2,7 +2,6 @@
 
 @section('content')
   <back-office-works
-    :payload="{{ $jobs }}"
     :algolia="{
       'index-name': '{{ env('SCOUT_PREFIX') }}works',
       'app-id': '{{ env('ALGOLIA_APP_ID') }}',
