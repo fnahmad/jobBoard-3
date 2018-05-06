@@ -43,7 +43,7 @@ class SkillController extends Controller{
 		return response()->json($messages, 201);
 	}
 
-	public function update(Request $request, string $slug) {
+	public function update(Request $request, $id) {
 		$validations = [
 			'name'         => 'required|string|max:255',
 		];
@@ -58,7 +58,7 @@ class SkillController extends Controller{
 		}
 
 		try {
-			$skill = Skill::where('slug', $slug)->firstOrFail();
+			$skill = Skill::findOrFail($id);
 		} catch(ModelNotFoundException $e) {
 			$messages = [
 				'type'    => 'danger',
@@ -79,9 +79,9 @@ class SkillController extends Controller{
 		return response()->json($messages, 200);
 	}
 
-	public function delete(Request $request, string $slug) {
+	public function delete(Request $request, $id) {
 		try {
-			$skill = Skill::where('slug', $slug)->firstOrFail();
+			$skill = Skill::findOrFail($id);
 		} catch(ModelNotFoundException $e) {
 			$messages = [
 				'type'    => 'danger',
