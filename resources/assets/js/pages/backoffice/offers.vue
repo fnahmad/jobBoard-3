@@ -1,13 +1,27 @@
 <template>
-  <v-template route="/admin/offers">
+  <v-template route="/admin/offers" :algolia="algolia">
     <h1>Offers</h1>
   </v-template>
 </template>
 
 <script>
-import VTemplate from './../../templates/backoffice'
+import VTemplate from './../../templates/back-office-list'
 export default {
   name: 'back-office-offers',
+  props: {
+    payload: {
+      type: Array,
+      default: () => []
+    },
+    algolia: {
+      type: Object,
+      default: () => ({
+        'index-name': 'your_indexName',
+        'app-id': 'YourAppID',
+        'api-key': 'YourSearchAPIKey' 
+      })
+    }
+  },
   components: { VTemplate }
 }
 </script>

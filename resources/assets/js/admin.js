@@ -37,7 +37,7 @@ const globalComponents = [
 // ---- IMPORT GLOBAL PLUGINS ---- //
 import InstantSearch from 'vue-instantsearch';
 
-const plugins = [InstantSearch]
+// const plugins = [InstantSearch]
 // Autoload components
 mapToFunc(globalComponents, (component, vue) => {
   if (component && component.name && vue) {
@@ -48,13 +48,13 @@ mapToFunc(globalComponents, (component, vue) => {
 }, [Vue])
 
 // Autoload plugins
-mapToFunc(plugins,  (plugin, vue) => {
-   if (plugin && vue) {
-       vue.use(plugin)
-   } else {
-     throw `check if your import your plugin correctly`
-   }
-}, [Vue])
+// mapToFunc(plugins,  (plugin, vue) => {
+//    if (plugin && vue) {
+//        vue.use(plugin)
+//    } else {
+//      throw `check if your import your plugin correctly`
+//    }
+// }, [Vue])
 
 const app = new Vue({
     el: '#app'
