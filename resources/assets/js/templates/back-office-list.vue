@@ -11,7 +11,13 @@
         <ais-results class="table-tbody">
           <tr slot="default" slot-scope="{result}">
             <td v-for="(item, key) in pickOnly(result, fields)" :key="result.id + key">{{ isDateAndFormat(key, item) || item }}</td>
-            <td class="table-tbody-td--action" v-for="({name, func}) in actions" :key="name" @click="callAction(func, refreshResults.bind(this))">{{ name }}</td>
+            <td
+              class="table-tbody-td--action"
+              v-for="({name, func}) in actions"
+              :key="name"
+              @click="callAction(func.bind(null, result.id), refreshResults.bind(this))">
+              {{ name }}
+            </td>
           </tr>
         </ais-results>
       </table>
@@ -71,16 +77,17 @@ export default {
         : false
     },
     async callAction (action, callback) {
-      await action.call()
-      callback.call()
+      const func = await action.call()
+        setTimeout(() => callback.call(func), 2000)
     },
-    refreshResults () {
+    refreshResults (payload) {
       if (this.$refs.aisIndex) {
         console.log('oui !!')
         const searchStore = this.$refs.aisIndex._localSearchStore
         searchStore.clearCache()
         searchStore.refresh()
       }
+      return payload
    }
   },
   components: { AisIndex, AisSearchBox, AisResults }

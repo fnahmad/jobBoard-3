@@ -106,7 +106,7 @@ class UserController extends Controller{
 		}
 	
 		try {
-			$user->jobs()->detach();
+			// $user->jobs()->detach();
 			$user->delete();
 		} catch(\Exception $e) {
 			$messages = [
