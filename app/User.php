@@ -36,7 +36,11 @@ class User extends Authenticatable{
 		'remember_token',
 	];
 
-	public function jobs() {
-		return $this->hasMany('App\Work');
+	public function worksOwner() {
+		return $this->hasMany('App\Work', 'user_id', 'id');
+	}
+
+	public function worksParticipations() {
+		return $this->belongsToMany('App\Work', 'work_user');
 	}
 }
