@@ -1,6 +1,6 @@
 export default {
   methods: {
-    async _$delete (id) {
+    async _$delete ({id}) {
       await this.$swal({
           title: 'Are you sure?',
           text: 'You can\'t revert your action',
@@ -20,5 +20,14 @@ export default {
           }
         }) 
     },
+    async _$edit (payload) {
+      await axios.patch(`/api/${this.namespace}`, payload)
+    },
+    async _$fetch ({id}) {
+      await axios.get(`/api/${this.namespace}/${id}`)
+    },
+    async _$editHelper (data) {
+      this.$modal.show(`bo_${this.namespace}`, {data})
+    }
   }
 }
