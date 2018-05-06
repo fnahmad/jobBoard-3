@@ -1,5 +1,5 @@
 <template>
-  <v-template route="/admin/users" v-bind="{ algolia, fields }">
+  <v-template route="/admin/users" v-bind="{ algolia, fields, title }">
     <h1>Users</h1>
   </v-template>
 </template>
@@ -25,7 +25,8 @@ export default {
         firstname: 'Prénom',
         lastname: 'Nom',
         updated_at: 'Mis à jour le'
-      }
+      },
+      title: 'Users'
     }
   },
   components: { VTemplate }

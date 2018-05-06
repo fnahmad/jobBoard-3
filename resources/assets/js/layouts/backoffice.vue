@@ -31,6 +31,7 @@
       </footer>
     </aside>
     <section class="content">
+      <h1>{{ title }}</h1>
       <slot></slot>
     </section>
   </div>
@@ -42,6 +43,10 @@ export default {
     route: {
       type: String,
       default: '/admin'
+    },
+    title: {
+      type: String,
+      default: 'Backoffice'
     }
   },
   data () {
