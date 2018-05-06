@@ -1,8 +1,23 @@
 <template>
   <layout as="backoffice" :props="{route}">
     <ais-index v-bind="algolia">
-
-    </ais-index>
+      <table>
+        <thead>
+          <div>
+            <tr>
+              <td v-for="(key, index) in fields" :key="index + key + 1111">{{ key }}</td>
+            </tr>
+          </div>
+        </thead>
+        <tbody>
+          <ais-results>
+            <tr slot="default" slot-scope="{result}">
+              <td v-for="(item, key) in pickOnly(result, fields)" :key="result.id + key">{{ item }}</td>
+            </tr>
+          </ais-results>
+        </tbody>
+      </table>
+    </ais-index>  
   </layout>
 </template>
 
@@ -10,9 +25,10 @@
 import {
   Index as AisIndex,
   SearchBox as AisSearchBox,
-  Results as Aisresult
+  Results as AisResults
 } from 'vue-instantsearch'
 
+import _pick from 'lodash/pick'
 export default {
   name: 'template-bo-list',
    props: {
@@ -27,8 +43,23 @@ export default {
         'app-id': 'YourAppID',
         'api-key': 'YourSearchAPIKey' 
       })
+    },
+    fields: {
+      type: Object,
+      default: () => ({
+        id: 'identifiant'
+      })
     }
   },
-  components: { AisIndex, AisSearchBox, Aisresult }
+  methods: {
+    pickOnly (array, itemsToPick) {
+      return _pick(array, Object.keys(itemsToPick))
+    }
+  },
+  components: { AisIndex, AisSearchBox, AisResults }
 }
 </script>
+
+<style scoped lang="scss">
+  
+</style>

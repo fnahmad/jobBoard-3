@@ -1,5 +1,5 @@
 <template>
-  <v-template route="/admin/users" :algolia="algolia">
+  <v-template route="/admin/users" v-bind="{ algolia, fields }">
     <h1>Users</h1>
   </v-template>
 </template>
@@ -16,6 +16,16 @@ export default {
         'app-id': 'YourAppID',
         'api-key': 'YourSearchAPIKey' 
       })
+    }
+  },
+  data () {
+    return {
+      fields: {
+        id: 'id',
+        firstname: 'Prénom',
+        lastname: 'Nom',
+        updated_at: 'Mis à jour le'
+      }
     }
   },
   components: { VTemplate }
