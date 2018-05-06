@@ -1,5 +1,5 @@
 <template>
-  <v-template route="/admin/offers" :algolia="algolia">
+  <v-template route="/admin/works" :algolia="algolia">
     <h1>Offers</h1>
   </v-template>
 </template>
@@ -7,7 +7,7 @@
 <script>
 import VTemplate from './../../templates/back-office-list'
 export default {
-  name: 'back-office-offers',
+  name: 'back-office-works',
   props: {
     payload: {
       type: Array,

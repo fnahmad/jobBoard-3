@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-  <back-office-offers
+  <back-office-works
     :payload="{{ $jobs }}"
     :algolia="{
       'index-name': '{{ env('SCOUT_PREFIX') }}works',
