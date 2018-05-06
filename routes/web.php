@@ -60,8 +60,11 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth', 'VerifyAdmin']], funct
 	Route::patch('/works/{slug}', 'Admin\WorkController@update')->name('api.works.update');
 	Route::delete('/works/{slug}', 'Admin\WorkController@delete')->name('api.works.delete');
 
-	Route::post('/users/new', 'Admin\WorkController@store')->name('api.users.store');
+	Route::post('/users/new', 'Admin\UserController@store')->name('api.users.store');
 	Route::patch('/users/{slug}', 'Admin\UserController@update')->name('api.users.update');
 	Route::delete('/users/{slug}', 'Admin\UserController@delete')->name('api.users.delete');
 
+	Route::post('/skills/new', 'Admin\SkillController@store')->name('api.skills.store');
+	Route::patch('/skills/{slug}', 'Admin\SkillController@update')->name('api.skills.update');
+	Route::delete('/skills/{slug}', 'Admin\SkillController@delete')->name('api.skills.delete');
 });
