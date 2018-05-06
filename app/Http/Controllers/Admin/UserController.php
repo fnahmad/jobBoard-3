@@ -4,18 +4,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 
-use App\Work;
+use App\User;
 use Illuminate\Http\Request;
 
-class OffersController extends Controller{
+class UserController extends Controller{
 	/**
 	 * Show the application dashboard.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$jobs = Work::with('skills')->get();
-
-		return view('admin.offers')->with(['jobs' => $jobs]);
+		return view('admin.users');
 	}
 }

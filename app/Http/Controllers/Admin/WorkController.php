@@ -4,18 +4,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 
-use App\User;
+use App\Work;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller{
+class WorkController extends Controller{
 	/**
 	 * Show the application dashboard.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$users = User::all();
-
-		return view('admin.users')->with(['users' => $users]);
+		return view('admin.works');
 	}
 }
