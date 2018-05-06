@@ -11,35 +11,57 @@
 |
 */
 
-Route::get('/', function() {
-	return view('welcome');
+Route::get('/', 'HomeController@index')->name('landing');
+
+/**
+ * WORK
+ */
+Route::group(['prefix' => 'works', 'middleware' => ['verifyUserInformations']], function() {
+	Route::get('/', 'WorkController@index')->name('works.index');
+	Route::get('/detail/{slug}', 'WorkController@show')->name('works.show');
+	Route::get('/edit/{slug}', 'WorkController@edit')->name('works.edit');
+	Route::post('/edit/{slug}', 'WorkController@update')->name('works.update');
+	Route::get('/new', 'WorkController@create')->name('works.create');
+	Route::post('/new', 'WorkController@store')->name('works.store');
+	Route::get('/delete/{slug}', 'WorkController@delete')->name('works.delete');
 });
 
-Auth::routes();
-
-Route::get('/confirm-account/{token}', 'UserController@verify');
-
-
-Route::group(['prefix' => 'offers', 'middleware' => ['verifyUserInformations']], function() {
-	Route::get('/', 'WorkController@index')->name('offers.index');
-	Route::get('/detail/{slug}', 'WorkController@show')->name('offers.show');
-	Route::get('/edit/{slug}', 'WorkController@edit')->name('offers.edit');
-	Route::post('/edit/{slug}', 'WorkController@update')->name('offers.update');
-	Route::get('/new', 'WorkController@create')->name('offers.create');
-	Route::post('/new', 'WorkController@store')->name('offers.store');
-	Route::get('/delete/{slug}', 'WorkController@delete')->name('offers.delete');
-});
-
-Route::group(['prefix' => 'admin', 'middleware' => ['verifyUserInformations', 'VerifyAdmin']], function() {
-	Route::get('/', 'Admin\HomeController@index')->name('admin.index');
-	Route::get('/offers', 'Admin\OffersController@index')->name('admin.offers.index');
-	Route::get('/users', 'Admin\UsersController@index')->name('admin.users.index');
-});
-
+/**
+ * SKILLS
+ */
 Route::group(['prefix' => 'skills', 'middleware' => ['verifyUserInformations']], function() {
 	Route::get('/', 'SkillController@index')->name('home');
 });
+
+/**
+ * USER
+ */
+Auth::routes();
+Route::get('/confirm-account/{token}', 'UserController@verify');
 Route::group(['prefix' => 'user', 'middleware' => ['verifyUserInformations']], function() {
 	Route::get('/', 'UserController@index')->name('user.index');
 	Route::post('/', 'UserController@update')->name('user.update');
+});
+
+/**
+ * BACK-OFFICE
+ */
+Route::group(['prefix' => 'admin', 'middleware' => ['verifyUserInformations', 'VerifyAdmin']], function() {
+	Route::get('/', 'Admin\HomeController@index')->name('admin.index');
+	Route::get('/works', 'Admin\WorkController@index')->name('admin.works.index');
+	Route::get('/users', 'Admin\UserController@index')->name('admin.users.index');
+});
+
+/**
+ * API
+ */
+Route::group(['prefix' => 'api', 'middleware' => ['auth', 'VerifyAdmin']], function() {
+	Route::post('/works/new', 'Admin\WorkController@store')->name('api.works.store');
+	Route::patch('/works/{slug}', 'Admin\WorkController@update')->name('api.works.update');
+	Route::delete('/works/{slug}', 'Admin\WorkController@delete')->name('api.works.delete');
+
+	Route::post('/users/new', 'Admin\WorkController@store')->name('api.users.store');
+	Route::patch('/users/{slug}', 'Admin\UserController@update')->name('api.users.update');
+	Route::delete('/users/{slug}', 'Admin\UserController@delete')->name('api.users.delete');
+
 });
