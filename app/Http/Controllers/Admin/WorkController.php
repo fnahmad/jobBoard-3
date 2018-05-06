@@ -78,7 +78,7 @@ class WorkController extends Controller{
 		return response()->json($messages, 201);
 	}
 
-	public function update(Request $request, string $slug) {
+	public function update(Request $request, string $id) {
 		$validations = [
 			'title'         => 'required|string|max:255',
 			'working_time'  => 'required|string',
@@ -104,7 +104,7 @@ class WorkController extends Controller{
 		}
 
 		try {
-			$work = Work::where('slug', $slug)->firstOrFail();
+			$work = Work::findOrFail($id);
 		} catch(ModelNotFoundException $e) {
 			$messages = [
 				'type'    => 'success',
@@ -143,9 +143,9 @@ class WorkController extends Controller{
 		return response()->json($messages, 200);
 	}
 
-	public function delete(Request $request, string $slug) {
+	public function delete(Request $request, string $id) {
 		try {
-			$work = Work::where('slug', $slug)->firstOrFail();
+			$work = Work::findOrFail($id);
 		} catch(ModelNotFoundException $e) {
 			$messages = [
 				'type'    => 'error',
