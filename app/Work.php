@@ -37,12 +37,13 @@ class Work extends Model{
 		return $this->belongsToMany('App\Skill', 'work_skill', 'work_id', 'skill_id');
 	}
 
-	public function user() {
-		return $this->belongsTo('App\User');
-	}
-
 	public function users() {
 		return $this->belongsToMany('App\User');
+	}
+
+
+	public function usersParticipants() {
+		return $this->belongsToMany('App\User', 'work_user');
 	}
 
 	/**
