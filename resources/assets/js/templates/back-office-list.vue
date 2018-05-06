@@ -88,6 +88,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  $blue: rgb(86, 144, 255);
   $lightblue: #e9eff9;
   $lighterblue: #f3f7fe;
   $space: .5rem;
@@ -144,7 +145,7 @@ export default {
           transform: scale(.95)
         }
         &:hover {
-          color: #000;
+          color: $blue;
           transform: scale(1.05)
         }
       }
