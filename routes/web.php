@@ -57,8 +57,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['verifyUserInformations', 'V
  */
 Route::group(['prefix' => 'api', 'middleware' => ['auth', 'VerifyAdmin']], function() {
 	Route::post('/works/new', 'Admin\WorkController@store')->name('api.works.store');
-	Route::patch('/works/{slug}', 'Admin\WorkController@update')->name('api.works.update');
-	Route::delete('/works/{slug}', 'Admin\WorkController@delete')->name('api.works.delete');
+	Route::patch('/works/{id}', 'Admin\WorkController@update')->name('api.works.update');
+	Route::delete('/works/{id}', 'Admin\WorkController@delete')->name('api.works.delete');
 
 	Route::post('/users/new', 'Admin\UserController@store')->name('api.users.store');
 	Route::patch('/users/{id}', 'Admin\UserController@update')->name('api.users.update');
