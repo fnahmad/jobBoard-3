@@ -1,5 +1,5 @@
 <template>
-  <v-template route="/admin/users" v-bind="{ algolia, fields, title }">
+  <v-template route="/admin/users" v-bind="{ algolia, fields, title, actions }">
     <h1>Users</h1>
   </v-template>
 </template>
@@ -26,8 +26,20 @@ export default {
         lastname: 'Nom',
         updated_at: 'Mis à jour le'
       },
-      title: 'Users'
+      namespace: 'users',
+      title: 'Users',
+      actions: [
+        { name: 'edit', func: this._edit },
+        { name: 'delete', func: this._delete },
+      ]
     }
+  },
+  methods: {
+    async _delete (id) { 
+      await axios.delete(`/api/${this.namespace}/${id}`)
+        .then(value => console.log(value))
+    },
+    _edit (id) { axios.delete(id) },
   },
   components: { VTemplate }
 }
