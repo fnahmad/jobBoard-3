@@ -35,9 +35,25 @@ export default {
     }
   },
   methods: {
-    async _delete (id) { 
-      await axios.delete(`/api/${this.namespace}/${id}`)
-        .then(value => console.log(value))
+    async _delete (id) {
+      await this.$swal({
+          title: 'Are you sure?',
+          text: 'You can\'t revert your action',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes Delete it!',
+          cancelButtonText: 'No, Keep it!',
+          showCloseButton: true,
+          showLoaderOnConfirm: true
+        })
+        .then(async (result) => {
+          if(result.value) {
+            await axios.delete(`/api/${this.namespace}/${id}`)
+            this.$swal('Deleted', 'You successfully deleted this file', 'success')
+          } else {
+            this.$swal('Cancelled', 'Your file is still intact', 'info')
+          }
+        }) 
     },
     _edit (id) { axios.delete(id) },
   },

@@ -41,7 +41,10 @@ const globalComponents = [
 import axios from 'axios'
 window.axios = axios
 
-const plugins = [];
+import Toasted from 'vue-toasted'
+import VueSweetalert2 from 'vue-sweetalert2';
+
+const plugins = [Toasted, VueSweetalert2];
 // Autoload components
 mapToFunc(
   globalComponents,
