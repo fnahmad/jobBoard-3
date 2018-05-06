@@ -104,14 +104,19 @@ class UserController extends Controller{
 			];
 			return response()->json($messages, 404);
 		}
-	
 		try {
-			// $user->jobs()->detach();
+			$user->worksParticipations()->detach();
+			$worksOwners = $user->worksOwner()->get();
+			foreach($worksOwners as $worksOwner) {
+				$worksOwner->user_id = null;
+				$worksOwner->save();
+			}
 			$user->delete();
 		} catch(\Exception $e) {
 			$messages = [
 				'type'    => 'error',
-				'message' => 'Impossible de supprimer l\'utilisateur'
+				'message' => 'Impossible de supprimer l\'utilisateur',
+				'error' => $e
 			];
 			return response()->json($messages, 401);
 		}
