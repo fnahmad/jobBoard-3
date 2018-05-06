@@ -15,8 +15,6 @@ export default {
           if(result.value) {
             await axios.delete(`/api/${this.namespace}/${id}`)
             this.$swal('Deleted', 'You successfully deleted this file', 'success')
-          } else {
-            this.$swal('Cancelled', 'Your file is still intact', 'info')
           }
         }) 
     },
