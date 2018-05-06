@@ -1,15 +1,17 @@
 <template>
   <layout as="backoffice" :props="{route, title}">
-    <ais-index v-bind="algolia">
+    <ais-index ref="aisIndex" v-bind="algolia">
       <table class="table" cellspacing="0">
         <thead class="table-thead">
           <tr>
-            <td v-for="(key, index) in fields" :key="index + key + 1111">{{ key }}</td>
+            <td v-for="(key, index) in fields" :key="index + key">{{ key }}</td>
+            <td style="text-align: center;" v-for="action in actions" :key="action.name"></td>
           </tr>
         </thead>
         <ais-results class="table-tbody">
           <tr slot="default" slot-scope="{result}">
-            <td v-for="(item, key) in pickOnly(result, fields)" :key="result.id + key">{{ item }}</td>
+            <td v-for="(item, key) in pickOnly(result, fields)" :key="result.id + key">{{ isDateAndFormat(key, item) || item }}</td>
+            <td class="table-tbody-td--action" v-for="({name, func}) in actions" :key="name" @click="callAction(func, refreshResults.bind(this))">{{ name }}</td>
           </tr>
         </ais-results>
       </table>
@@ -25,6 +27,7 @@ import {
 } from 'vue-instantsearch'
 
 import _pick from 'lodash/pick'
+import _isDate from 'lodash/isDate'
 export default {
   name: 'template-bo-list',
    props: {
@@ -46,6 +49,13 @@ export default {
         id: 'identifiant'
       })
     },
+    actions: {
+      type: Array,
+      default: () => [
+        { name: 'edit', func: () => {console.log('edit')} },
+        { name: 'delete', func: () => {console.log('delete')} },
+      ]
+    },
     title: {
       type: String,
       default: 'Backoffice'
@@ -54,7 +64,24 @@ export default {
   methods: {
     pickOnly (array, itemsToPick) {
       return _pick(array, Object.keys(itemsToPick))
-    }
+    },
+    isDateAndFormat (key, value) {
+      return (key === 'updated_at' || key === 'created_at')
+        ? moment(value).format('DD/MM/YY')
+        : false
+    },
+    async callAction (action, callback) {
+      await action.call()
+      callback.call()
+    },
+    refreshResults () {
+      if (this.$refs.aisIndex) {
+        console.log('oui !!')
+        const searchStore = this.$refs.aisIndex._localSearchStore
+        searchStore.clearCache()
+        searchStore.refresh()
+      }
+   }
   },
   components: { AisIndex, AisSearchBox, AisResults }
 }
@@ -76,7 +103,7 @@ export default {
       padding: .75rem;
       padding-left: 1rem;
       box-shadow: 0px 0px 20px -5px rgba(235,241,249,1);
-      transition: all ease .3s;
+      transition: all ease .15s;
     }
     tr {
       &:hover td {
@@ -107,6 +134,19 @@ export default {
         background: white;
         border-bottom: $lightblue solid 1px;
         padding: 1rem;
+      }
+      &-td--action {
+        cursor: pointer;
+        transition: all ease .05s;
+        color: #333;
+        &:active:hover {
+          filter: blur(1px);
+          transform: scale(.95)
+        }
+        &:hover {
+          color: #000;
+          transform: scale(1.05)
+        }
       }
     }
   }

@@ -7,6 +7,9 @@
 
 require("./bootstrap");
 
+window.moment = require('moment')
+window.moment.locale('fr')
+
 const mapToFunc = (array, func, args) => {
   array.forEach(element => {
     func(element, ...args);
