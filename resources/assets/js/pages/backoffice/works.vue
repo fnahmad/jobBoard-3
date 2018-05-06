@@ -1,5 +1,5 @@
 <template>
-  <v-template route="/admin/works" :algolia="algolia">
+  <v-template route="/admin/works" v-bind="{ algolia, title }">
     <h1>Offers</h1>
   </v-template>
 </template>
@@ -16,6 +16,11 @@ export default {
         'app-id': 'YourAppID',
         'api-key': 'YourSearchAPIKey' 
       })
+    }
+  },
+  data () {
+    return {
+      title: 'Works'
     }
   },
   components: { VTemplate }

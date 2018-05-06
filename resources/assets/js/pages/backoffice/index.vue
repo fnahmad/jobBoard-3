@@ -1,6 +1,6 @@
 <template>
   <layout as="backoffice" route="/admin">
-    <h1>backoffice</h1>
+    <h2>Dashboard</h2>
   </layout>
 </template>
 
