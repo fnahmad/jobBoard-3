@@ -49,7 +49,7 @@ export default {
       navPayload: [
         {name: 'Dashboard', path: '/admin'},
         {name: 'Users', path: '/admin/users'},
-        {name: 'Offers', path: '/admin/offers'}
+        {name: 'Works', path: '/admin/works'}
       ]
     }
   }

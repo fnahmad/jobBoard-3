@@ -23,8 +23,6 @@ class HomeController extends Controller{
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$jobs = Work::with('skills')->get();
-
-		return view('home')->with(['jobs' => $jobs]);
+		return view('welcome');
 	}
 }
