@@ -54,8 +54,9 @@ export default {
     return {
       navPayload: [
         {name: 'Dashboard', path: '/admin'},
-        {name: 'Users', path: '/admin/users'},
-        {name: 'Works', path: '/admin/works'}
+        {name: 'Compétences', path: '/admin/skills'},
+        {name: 'Offres', path: '/admin/works'},
+        {name: 'Utilisateurs', path: '/admin/users'},
       ]
     }
   }

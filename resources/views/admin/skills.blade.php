@@ -1,5 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>Skills</h1>
+  <back-office-skills
+    :algolia="{
+      'index-name': '{{ env('SCOUT_PREFIX') }}skills',
+      'app-id': '{{ env('ALGOLIA_APP_ID') }}',
+      'api-key': '{{ env('ALGOLIA_SECRET') }}'
+    }"
+  />
 @endsection
