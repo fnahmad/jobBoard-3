@@ -36,8 +36,6 @@ class HomeController extends Controller{
 			'totalUsers' => $totalUsers,
 		];
 
-		dd($stats);
-
 		return view('admin.home')->with(['stats' => $stats]);
 	}
 }
