@@ -5,7 +5,7 @@
         <thead class="table-thead">
           <tr>
             <td v-for="(key, index) in fields" :key="index + key">{{ key }}</td>
-            <td style="text-align: center;" v-for="action in actions" :key="action.name"></td>
+            <td style="text-align: center;" v-for="action in actions" :key="action.name">{{ action.name }}</td>
           </tr>
         </thead>
         <ais-results class="table-tbody">
@@ -111,11 +111,10 @@ export default {
     td { 
       padding: .75rem;
       padding-left: 1rem;
-      box-shadow: 0px 0px 20px -5px rgba(235,241,249,1);
       transition: all ease .15s;
     }
     tr {
-      &:hover td {
+      &:hover {
         box-shadow: 0px 0px 40px 0px rgba(235,241,249,1); 
       }
       &:first-child {
