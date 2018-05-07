@@ -1,6 +1,5 @@
 <template>
-  <v-template route="/admin/works" v-bind="{ algolia, title, actions }">
-    <h1>Offers</h1>
+  <v-template route="/admin/works" v-bind="{ algolia, fields, title, actions }">
   </v-template>
 </template>
 
@@ -22,10 +21,16 @@ export default {
   mixins: [crudMixin],
   data () {
     return {
-      title: 'Works',
+      fields: {
+        id: 'id',
+        title: 'Titre',
+        budget: 'Budget (€)',
+        updated_at: 'Mis à jour le'
+      },
+      title: 'Offres',
       namespace: 'works',
       actions: [
-        { name: 'delete', func: this._$delete },
+        { name: 'supprimer', func: this._$delete },
       ]
     }
   },

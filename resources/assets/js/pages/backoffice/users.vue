@@ -27,13 +27,14 @@ export default {
         id: 'id',
         firstname: 'Prénom',
         lastname: 'Nom',
+        promo: 'Promo',
         updated_at: 'Mis à jour le'
       },
       namespace: 'users',
-      title: 'Users',
+      title: 'Utilisateurs',
       actions: [
-        { name: 'edit', func: this._$editHelper },
-        { name: 'delete', func: this._$delete },
+        { name: 'modifier', func: this._$editHelper },
+        { name: 'supprimer', func: this._$delete },
       ]
     }
   },
