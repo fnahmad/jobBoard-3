@@ -47,7 +47,7 @@ export default {
     },
     title: {
       type: String,
-      default: 'Backoffice'
+      default: 'Dashboard'
     }
   },
   data () {
