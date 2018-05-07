@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\AdminWorkPosted;
 use App\Work;
 use App\Skill;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Notification;
+use App\User;
 class WorkController extends Controller{
 	public function index() {
 		return view('works.index');
@@ -66,6 +68,9 @@ class WorkController extends Controller{
 			$work->skills()->sync($skillsId);
 			$work->save();
 		}
+
+		// Notification des admins
+		Notification::send(User::first(), new AdminWorkPosted($work));
 
 		\Session::flash('message', 'Offre ajoutée avec succès');
 		\Session::flash('alert-class', 'success');
