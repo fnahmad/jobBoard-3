@@ -43,4 +43,8 @@ class User extends Authenticatable{
 	public function worksParticipations() {
 		return $this->belongsToMany('App\Work', 'work_user');
 	}
+	
+	public function routeNotificationForSlack() {
+    return env('SLACK_WEBHOOK_URL');
+	}
 }
