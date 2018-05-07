@@ -1,5 +1,5 @@
 <template>
-  <v-template route="/admin/works" v-bind="{ algolia, fields, title, actions }">
+  <v-template route="/admin/skills" v-bind="{ algolia, fields, title, actions }">
     <modal />
   </v-template>
 </template>
@@ -7,9 +7,9 @@
 <script>
 import VTemplate from './../../templates/back-office-list'
 import crudMixin from './../../mixins/crud'
-import modal from './../../components/modals/backoffice/work'
+import modal from './../../components/modals/backoffice/skill'
 export default {
-  name: 'back-office-works',
+  name: 'back-office-skills',
   props: {
     algolia: {
       type: Object,
@@ -25,12 +25,10 @@ export default {
     return {
       fields: {
         id: 'id',
-        title: 'Titre',
-        budget: 'Budget (€)',
-        updated_at: 'Mis à jour le'
+        name: 'name',
       },
-      title: 'Offres',
-      namespace: 'works',
+      title: 'Compétences',
+      namespace: 'skills',
       actions: [
         { name: 'modifier', func: this._$editHelper },
         { name: 'supprimer', func: this._$delete },

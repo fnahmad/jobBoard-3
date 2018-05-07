@@ -1,5 +1,5 @@
 <template>
-  <modal-type name="works" @data="storeData" @before-close="() => $emit('data', item)">
+  <modal-type name="skills" @data="storeData" @before-close="() => $emit('data', item)">
     <input
       v-if="item"
       v-for="(value, field) in item"

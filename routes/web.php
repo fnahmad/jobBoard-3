@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['verifyUserInformations', 'V
 	Route::get('/', 'Admin\HomeController@index')->name('admin.index');
 	Route::get('/works', 'Admin\WorkController@index')->name('admin.works.index');
 	Route::get('/users', 'Admin\UserController@index')->name('admin.users.index');
+	Route::get('/skills', 'Admin\SkillController@index')->name('admin.skills.index');
 });
 
 /**
