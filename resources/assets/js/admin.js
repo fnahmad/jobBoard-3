@@ -26,6 +26,7 @@ import LayoutHelper from "./layouts/helper.vue";
 import PageBackoffice from "./pages/backoffice";
 import PageBoUsers from "./pages/backoffice/users";
 import PageBoWorks from "./pages/backoffice/works";
+import PageBoSkills from "./pages/backoffice/skills";
 
 const globalComponents = [
   // components
@@ -33,6 +34,7 @@ const globalComponents = [
   // pages
   PageBackoffice,
   PageBoWorks,
+  PageBoSkills,
   PageBoUsers
 ];
 

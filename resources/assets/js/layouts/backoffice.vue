@@ -1,11 +1,13 @@
 <template>
   <div class="wrapper">
     <aside class="sidebar">
-      <header class="sidebar-header">
+      <a href="/">
+        <header class="sidebar-header">
         <img class="sidebar-header-img" src="http://via.placeholder.com/50x50" alt="logo">
         <span>jobBoard</span>
       </header>
-        <hr />
+      </a>
+      <hr />
       <nav class="sidebar-nav">
         <ul>
           <li 
@@ -26,7 +28,6 @@
        <div class="sidebar-footer-content">
         <img src="http://via.placeholder.com/50x50" alt="logo">
         <h4>Nom prénom</h4>
-        <h2>Rôle</h2>
        </div>
       </footer>
     </aside>
@@ -53,8 +54,9 @@ export default {
     return {
       navPayload: [
         {name: 'Dashboard', path: '/admin'},
-        {name: 'Users', path: '/admin/users'},
-        {name: 'Works', path: '/admin/works'}
+        {name: 'Compétences', path: '/admin/skills'},
+        {name: 'Offres', path: '/admin/works'},
+        {name: 'Utilisateurs', path: '/admin/users'},
       ]
     }
   }
@@ -75,6 +77,10 @@ export default {
     position: relative;
     box-shadow: inset -1px 0px 5px 0px $gray;
     background-color: white;
+    a {
+      text-decoration: none;
+      color: #000000;
+    }
     hr {
       margin: 0 1rem 1em 1rem;
       background-color: $gray;
