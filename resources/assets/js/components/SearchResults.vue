@@ -1,6 +1,6 @@
 <template>
   <div class="search-results">
-    <ais-results>
+    <ais-results :stack="true" :results-per-page="5">
       <template slot-scope="{ result }">
         <div class="search-results__card">
           <div class="card__image">
@@ -29,7 +29,12 @@
           </ul>
         </div>
       </template>
-    </ais-results>    
+    </ais-results>
+    <div v-observe-visibility="loadmore">
+      <div class="load-more">
+        Loading more...
+      </div>
+    </div>
   </div>
 </template>
 
@@ -51,6 +56,9 @@ export default {
     },
     phoneFormat(phone) {
       return phone.toString().replace(/\B(?=(\d{2})+(?!\d))/g, " ");      
+    },
+    loadmore(){
+      this.$emit('loadmore')
     }
   }
 }
@@ -132,12 +140,16 @@ export default {
       }
     }
   }
+
+  .load-more, .no-result{
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    line-height: 150px;
+    background: rgba(#000000, .025);
+    font-size: 1.6rem;
+    color: rgba(#000000, .5);
+  }
 }
 
 </style>
-
-// title
-// content
-// avatar
-// start_at
-// budget
