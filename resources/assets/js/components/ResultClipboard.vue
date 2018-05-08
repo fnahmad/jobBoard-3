@@ -27,13 +27,17 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
+    @media (min-width: 500px) {
+      justify-content: flex-end;
+    }
     input{
       display: none;
     }
     p{
       margin: 0;
+      order: 2;
     }
     button{
       background: none;
@@ -43,8 +47,14 @@ export default {
       margin: 0;
       display: flex;
       padding: 3px;
-      margin-left: 5px;
+      margin-right: 5px;
+      order: 1;
       cursor: pointer;
+      @media (min-width: 500px) {
+        order: 3;
+        margin-left: 5px;
+        margin-right: 0;
+      }      
       &:active{
         svg{
           fill: rgba(#000000, .15);

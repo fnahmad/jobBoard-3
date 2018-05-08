@@ -39,6 +39,7 @@
 
         .ais-input{
             width: 30vw;
+            min-width: 250px;
             padding: 10px 30px;
             background: var(--white);
             border: none;
