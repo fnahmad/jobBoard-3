@@ -13,7 +13,11 @@
     </head>
     <body>
     <h1>Welcome</h1>
+    @guest
     <a href="{{ route('login') }}">Login</a>
     <a href="{{ route('register') }}">Register</a>
+    @else
+    <a href="{{ route('works.index') }}">Offres</a>
+    @endif
     </body>
 </html>

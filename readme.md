@@ -68,4 +68,4 @@ Password : jobBoardHetic
 * **Alexis BENOLIEL** - *Front-end developer* - [Portfolio](https://www.alexisbenoliel.fr/)
 * **Antonin CARLIN** - *Front-end developer* - [Portfolio](https://www.antonincarlin.com/)
 * **Etienne FONTAINE** - *Back-end developer, DevOps, Product Owner* - [Portfolio](https://etiennefontaine.fr/)
-* **BAPTISTE VILLAIN** - *Front-end developer* - [Github](https://github.com/BaptisteVillain)
+* **Baptiste VILLAIN** - *Front-end developer* - [Github](https://github.com/BaptisteVillain)

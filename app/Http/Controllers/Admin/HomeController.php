@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 
-use App\Job;
-use App\Skill;
+use App\User;
 use App\Work;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HomeController extends Controller{
 	/**
@@ -16,8 +16,26 @@ class HomeController extends Controller{
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$jobs = Work::with('skills')->get();
 
-		return view('admin.home')->with(['jobs' => $jobs]);
+		// Get new offers of the day
+		$offersThisDay = Work::where('created_at', '>', Carbon::now()->startOfDay())
+													->where('created_at', '<', Carbon::now())
+													->count();
+
+		// Get new offers of the week
+		$offersThisWeek = Work::where('created_at', '>', Carbon::now()->startOfWeek())
+													->where('created_at', '<', Carbon::now())
+													->count();
+
+		// Get Total users
+		$totalUsers = User::where('is_confirmed', 1)->count();
+
+		$stats = [
+			'offersThisDay' => $offersThisDay,
+			'offersThisWeek' => $offersThisWeek,
+			'totalUsers' => $totalUsers,
+		];
+
+		return view('admin.home')->with(['stats' => $stats]);
 	}
 }

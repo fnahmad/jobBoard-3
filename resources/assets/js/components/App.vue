@@ -32,7 +32,6 @@ export default {
         }
     },
     mounted() {
-        console.log('Component .')
     },
     computed: {
         indexComplete() {

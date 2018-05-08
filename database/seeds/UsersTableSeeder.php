@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder{
 		$user->lastname     = 'Board';
 		$user->email        = 'jobboard@example.com';
 		$user->email_token  = base64_encode('jobboard@example.com');
-		$user->password     = base64_encode('jobBoardHetic');
+		$user->password     = Hash::make('jobBoardHetic');
 		$user->promo        = '2020';
 		$user->is_confirmed = 1;
 		$user->save();
