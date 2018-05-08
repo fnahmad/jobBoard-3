@@ -3,11 +3,15 @@
     :app-id=id
     :api-key=secret
     :index-name=indexComplete
+    :query-parameters="{
+        'page': page,
+        'hitsPerPage': 5
+        }"
     >
         <search-header></search-header>
         <main class="search-main">
             <search-filters></search-filters>
-            <search-results></search-results>
+            <search-results @loadmore="loadmore"></search-results>
         </main>
     </ais-index>
 </template>
@@ -28,7 +32,7 @@ export default {
     },
     data () {
         return{
-
+            page: 1
         }
     },
     mounted() {
@@ -37,6 +41,12 @@ export default {
     computed: {
         indexComplete() {
             return `${this.index}works`
+        }
+    },
+    methods:{
+        loadmore(){
+            console.log('loadmore')
+            ++this.page
         }
     }
 }
