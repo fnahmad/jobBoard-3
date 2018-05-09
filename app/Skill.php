@@ -7,7 +7,6 @@ use Laravel\Scout\Searchable;
 
 class Skill extends Model{
 
-
 	use Searchable;
 
 	/**

@@ -11,9 +11,6 @@
 
 <body>
     <header class="header"></header>
-</body>
-
-</html>
 <div class="home">
     <div class="home__bg">
         <div class="home__bg__gradient"></div>
@@ -28,3 +25,5 @@
     </div>
 </div>
 <footer class="footer"></footer>
+</body>
+</html>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Mail\EmailVerification;
+use App\Notifications\AdminUserRegistered;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Notification;
 
 class RegisterController extends Controller{
 	/*
@@ -89,6 +91,8 @@ class RegisterController extends Controller{
 		$this->validator($request->all())->validate();
 		$user = $this->create($request->all());
 		Mail::to($user->email)->send(new EmailVerification($user));
+		// Notification des admins
+		Notification::send($user, new AdminUserRegistered($user));
 
 		return view('auth.verification');
 	}
