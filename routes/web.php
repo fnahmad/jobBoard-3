@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@index')->name('landing');
 /**
  * WORK
  */
-Route::group(['prefix' => 'works', 'middleware' => ['verifyUserInformations']], function() {
+Route::group(['prefix' => 'works', 'middleware' => ['auth', 'verifyUserInformations']], function() {
 	Route::get('/', 'WorkController@index')->name('works.index');
 	Route::get('/detail/{slug}', 'WorkController@show')->name('works.show');
 	Route::get('/edit/{slug}', 'WorkController@edit')->name('works.edit');
@@ -29,7 +29,7 @@ Route::group(['prefix' => 'works', 'middleware' => ['verifyUserInformations']], 
 /**
  * SKILLS
  */
-Route::group(['prefix' => 'skills', 'middleware' => ['verifyUserInformations']], function() {
+Route::group(['prefix' => 'skills', 'middleware' => ['auth', 'verifyUserInformations']], function() {
 	Route::get('/', 'SkillController@index')->name('home');
 });
 
@@ -38,7 +38,7 @@ Route::group(['prefix' => 'skills', 'middleware' => ['verifyUserInformations']],
  */
 Auth::routes();
 Route::get('/confirm-account/{token}', 'UserController@verify');
-Route::group(['prefix' => 'user', 'middleware' => ['verifyUserInformations']], function() {
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'verifyUserInformations']], function() {
 	Route::get('/', 'UserController@index')->name('user.index');
 	Route::post('/', 'UserController@update')->name('user.update');
 });
@@ -46,7 +46,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['verifyUserInformations']], f
 /**
  * BACK-OFFICE
  */
-Route::group(['prefix' => 'admin', 'middleware' => ['verifyUserInformations', 'VerifyAdmin']], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verifyUserInformations', 'VerifyAdmin']], function() {
 	Route::get('/', 'Admin\HomeController@index')->name('admin.index');
 	Route::get('/works', 'Admin\WorkController@index')->name('admin.works.index');
 	Route::get('/users', 'Admin\UserController@index')->name('admin.users.index');
