@@ -30,7 +30,8 @@ import Root from './components/App.vue'
 
 const globalComponents = [
   // components
-  vSelect, LayoutHelper,
+  vSelect, 
+  LayoutHelper,
   // pages
   Root
 ]
