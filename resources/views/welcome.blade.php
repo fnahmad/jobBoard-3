@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/landing.css') }}">
     <script src="{{ asset('js/landing.js') }}" defer></script>
 </head>
-
 <body>
     <header class="header"></header>
 <div class="home">

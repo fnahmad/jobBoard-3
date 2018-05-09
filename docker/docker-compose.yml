@@ -70,6 +70,12 @@ services:
       networks:
         - frontend
         - backend
+      deploy:
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
 
 ### PHP-FPM ##############################################
     php-fpm:
@@ -111,6 +117,12 @@ services:
         - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
       networks:
         - backend
+      deploy:
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
 
 ### PHP Worker ############################################
     php-worker:
@@ -128,6 +140,12 @@ services:
         - "dockerhost:${DOCKER_HOST_IP}"
       networks:
         - backend
+      deploy:
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
 
 ### NGINX Server #########################################
     nginx:
@@ -148,6 +166,12 @@ services:
       networks:
         - frontend
         - backend
+      deploy:
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
 
 ### MySQL ################################################
     mysql:
@@ -168,6 +192,12 @@ services:
         - "${MYSQL_PORT}:3306"
       networks:
         - backend
+      deploy:
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
 
 ### Redis ################################################
     redis:
@@ -178,6 +208,12 @@ services:
         - "${REDIS_PORT}:6379"
       networks:
         - backend
+      deploy:
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
 
 ### phpMyAdmin ###########################################
     phpmyadmin:
@@ -204,6 +240,12 @@ services:
       networks:
         - frontend
         - backend
+      deploy:
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
 
 ### Laravel Echo Server #######################################
     laravel-echo-server:
@@ -218,3 +260,9 @@ services:
       networks:
         - frontend
         - backend
+      deploy:
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
