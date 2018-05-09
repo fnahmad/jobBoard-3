@@ -23,5 +23,3 @@ mix.webpackConfig(webpack => ({
       ]
   })
 )
-
-
