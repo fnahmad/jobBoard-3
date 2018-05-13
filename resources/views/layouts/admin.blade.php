@@ -12,6 +12,7 @@
 	
 	<!-- Scripts -->
 	<script src="{{ asset('js/admin.js') }}" defer></script>
+	@yield('script')
 	
 	<!-- Fonts -->
 	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
