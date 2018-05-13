@@ -1,6 +1,6 @@
 <template>
   <div class="search-results">
-    <ais-results>
+    <ais-results :stack="true" :results-per-page="5">
       <template slot-scope="{ result }">
         <div class="search-results__card">
           <div class="card__image">
@@ -29,7 +29,19 @@
           </ul>
         </div>
       </template>
-    </ais-results>    
+    </ais-results>
+    <ais-no-results>
+      <template>
+        <div class="no-results">
+          No offers found.
+        </div>
+      </template>
+    </ais-no-results>
+    <div v-observe-visibility="loadmore">
+      <div class="load-more">
+        Loading more...
+      </div>
+    </div>
   </div>
 </template>
 
@@ -51,6 +63,9 @@ export default {
     },
     phoneFormat(phone) {
       return phone.toString().replace(/\B(?=(\d{2})+(?!\d))/g, " ");      
+    },
+    loadmore(){
+      this.$emit('loadmore')
     }
   }
 }
@@ -67,23 +82,35 @@ export default {
     background: var(--white);
     box-shadow: 0px 5px 10px rgba(0, 0, 0, .05);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    font-size: 1.6rem;    
+    font-size: 1.6rem;
+    @media (min-width: 500px) {
+      flex-direction: row;
+    }    
     .card__image{
-      width: 150px;
+      width: 100%;
       height: 150px;
       background: linear-gradient(to right, #da4453, #89216b);
-      flex-shrink: 0;      
+      flex-shrink: 0;
+      @media (min-width: 500px) {
+        width: 150px;
+      }
     }
     .card__infos{
       width: auto;
-      margin: 0 15px;
+      margin: 0;
+      @media (min-width: 500px) {
+        margin: 0 15px;
+      }      
       h3{
         font-size: 2rem;
         font-weight: 700;
         text-transform: uppercase;
-        margin-bottom: 15px;
+        margin: 15px 0;
+        @media (min-width: 500px) {
+          margin-top: 0;
+        }        
       }
       p{
         font-size: 1.6rem;
@@ -93,24 +120,31 @@ export default {
       }
     }
     .card__more{
-      margin-left: auto;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      margin-left: auto;
       flex-shrink: 0;
+      margin-top: 15px;
+      @media (min-width: 500px) {
+        margin-top: 0;
+        margin-left: auto;
+        align-items: flex-end;
+      }      
       .result-date, .result-budget{
-        text-align: right;
         text-transform: uppercase;
         font-size: 1.4rem;
         color: var(--grey);
+        @media (min-width: 500px) {
+          text-align: right;
+        }        
       }
       .contact__clipboards{
         margin-top: auto;
         h4{
-          text-align: right;
           font-size: 1.6rem;
           font-weight: 600;
+          @media (min-width: 500px) {
+            text-align: right;
+          } 
         }
       }
     }
@@ -132,12 +166,16 @@ export default {
       }
     }
   }
+
+  .load-more, .no-results{
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    line-height: 150px;
+    background: rgba(#000000, .025);
+    font-size: 1.6rem;
+    color: rgba(#000000, .5);
+  }
 }
 
 </style>
-
-// title
-// content
-// avatar
-// start_at
-// budget

@@ -38,10 +38,11 @@ const globalComponents = [
 ];
 
 // ---- IMPORT GLOBAL PLUGINS ---- //
-import VueClipboard from "vue-clipboard2";
-import InstantSearch from "vue-instantsearch";
+import VueClipboard from 'vue-clipboard2'
+import InstantSearch from 'vue-instantsearch';
+import VueObserveVisibility from 'vue-observe-visibility'
 
-const plugins = [InstantSearch, VueClipboard];
+const plugins = [InstantSearch, VueClipboard, VueObserveVisibility]
 // Autoload components
 mapToFunc(
   globalComponents,

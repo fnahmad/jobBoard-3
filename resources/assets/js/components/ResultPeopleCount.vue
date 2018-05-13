@@ -14,15 +14,20 @@ export default {
 
 <style lang="scss">
 .result-people{
-  margin-left: 15px;
   display: inline-block;
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--light-grey);
-  display: inline-flex;
+  display: block;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
+  @media (min-width: 500px) {
+    margin-top: 0;    
+    display: inline-flex;
+    margin-left: 15px;
+  }  
   svg {
     margin-left: 5px;
     width:  16px;
