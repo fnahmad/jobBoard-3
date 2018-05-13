@@ -8,6 +8,7 @@ use App\Work;
 use App\Skill;
 use Illuminate\Http\Request;
 
+use Validator;
 class WorkController extends Controller{
 	/**
 	 * Show the application dashboard.

@@ -1,13 +1,13 @@
 <template>
   <v-template route="/admin/skills" v-bind="{ algolia, fields, title, actions }">
-    <modal />
+    <modal :config="configEdit" @data="edit" @callback="func => callback = func"/>
   </v-template>
 </template>
 
 <script>
 import VTemplate from './../../templates/back-office-list'
 import crudMixin from './../../mixins/crud'
-import modal from './../../components/modals/backoffice/skill'
+import modal from './../../components/modals/backoffice/bo'
 export default {
   name: 'back-office-skills',
   props: {
@@ -27,12 +27,28 @@ export default {
         id: 'id',
         name: 'name',
       },
+      callback: null,
+      configEdit: {
+        name: { 
+          label: 'lol',
+          placeholder: 'mdr',
+          type: 'text'
+        }
+      },
       title: 'Compétences',
       namespace: 'skills',
       actions: [
         { name: 'modifier', func: this._$editHelper },
         { name: 'supprimer', func: this._$delete },
       ]
+      
+    }
+  },
+  methods: {
+    edit (data) {
+      this._$edit(data).then(() => {
+        setTimeout(() => this.callback(), 2000)
+      })
     }
   },
   components: { VTemplate, modal }

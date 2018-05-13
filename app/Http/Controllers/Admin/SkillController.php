@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Skill;
 use Illuminate\Http\Request;
-
+use Validator;
 class SkillController extends Controller{
 	/**
 	 * Show the application dashboard.

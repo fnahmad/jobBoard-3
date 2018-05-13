@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 
+use Validator;
 class UserController extends Controller{
 	/**
 	 * Show the application dashboard.
