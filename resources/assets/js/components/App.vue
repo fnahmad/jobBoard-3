@@ -8,6 +8,7 @@
         'hitsPerPage': 5
         }"
     >
+        <nav-bar :logout="logout"></nav-bar>
         <search-header></search-header>
         <main class="search-main">
             <search-filters></search-filters>
@@ -21,14 +22,16 @@
 import SearchHeader from './SearchHeader'
 import SearchResults from './SearchResults'
 import SearchFilters from './SearchFilters'
+import NavBar from './NavBar'
 
 export default {
     name: 'app',
-    props: ['index', 'secret', 'id'],
+    props: ['index', 'secret', 'id', 'logout'],
     components: {
         SearchHeader,
         SearchResults,
         SearchFilters,
+        NavBar
     },
     data () {
         return{
