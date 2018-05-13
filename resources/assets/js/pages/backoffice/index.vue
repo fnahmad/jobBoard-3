@@ -1,14 +1,18 @@
 <template>
-  <v-template>
-    <h1>backoffice</h1>
-  </v-template>
+  <layout as="backoffice" route="/admin">
+    <h2>Infos</h2>
+  </layout>
 </template>
 
 <script>
-import VTemplate from './../../templates/backoffice'
 export default {
   name: 'back-office',
-  components: { VTemplate }
+  props: {
+    payload: {
+      type: Array,
+      default: () => []
+    }
+  }
 }
 </script>
 

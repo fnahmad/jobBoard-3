@@ -38,5 +38,12 @@ export default {
       }
     }
   }
+  .ais-refinement-list {
+    font-size: 1.4rem;
+    margin-top: 10px;
+    &__value {
+      margin-left: 8px;
+    }
+  }
 </style>
 

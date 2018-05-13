@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\AdminWorkPosted;
 use App\Work;
 use App\Skill;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Notification;
+use App\User;
 class WorkController extends Controller{
 	public function index() {
 		return view('works.index');
@@ -67,10 +69,13 @@ class WorkController extends Controller{
 			$work->save();
 		}
 
+		// Notification des admins
+		Notification::send(User::first(), new AdminWorkPosted($work));
+
 		\Session::flash('message', 'Offre ajoutée avec succès');
 		\Session::flash('alert-class', 'success');
 
-		return redirect()->route('offers.index');
+		return redirect()->route('works.index');
 	}
 
 	public function show(Request $request, string $slug) {
@@ -81,7 +86,7 @@ class WorkController extends Controller{
 			\Session::flash('message', 'Offre non trouvée');
 			\Session::flash('alert-class', 'error');
 
-			return redirect()->route('offers.index');
+			return redirect()->route('works.index');
 		}
 
 		return view('works.show')->with(['work' => $work]);
@@ -95,7 +100,7 @@ class WorkController extends Controller{
 			\Session::flash('message', 'Offre non trouvée');
 			\Session::flash('alert-class', 'error');
 
-			return redirect()->route('offers.index');
+			return redirect()->route('works.index');
 		}
 		$skills = Skill::all()->pluck('name');
 
@@ -130,7 +135,7 @@ class WorkController extends Controller{
 			\Session::flash('message', 'Offre non trouvée');
 			\Session::flash('alert-class', 'error');
 
-			return redirect()->route('offers.index');
+			return redirect()->route('works.index');
 		}
 		$work->fill($data);
 		$work->save();
@@ -158,7 +163,7 @@ class WorkController extends Controller{
 		\Session::flash('message', 'Offre mise à jour avec succès');
 		\Session::flash('alert-class', 'success');
 
-		return redirect()->route('offers.index');
+		return redirect()->route('works.index');
 	}
 
 	public function delete(Request $request, string $slug) {
@@ -169,12 +174,12 @@ class WorkController extends Controller{
 			\Session::flash('message', 'Offre non trouvée');
 			\Session::flash('alert-class', 'error');
 
-			return redirect()->route('offers.index');
+			return redirect()->route('works.index');
 		}
 		if($work->user_id !== Auth::id() && ! Auth::user()->is_admin) {
 			\Session::flash('message', 'Vous n\'avez pas les droits');
 			\Session::flash('alert-class', 'error');
-			return redirect()->route('offers.index');
+			return redirect()->route('works.index');
 		}
 		try {
 			$work->skills()->detach();
@@ -182,11 +187,11 @@ class WorkController extends Controller{
 		} catch(\Exception $e) {
 			\Session::flash('message', 'Offre non supprimée');
 			\Session::flash('alert-class', 'error');
-			return redirect()->route('offers.index');
+			return redirect()->route('works.index');
 		}
 		\Session::flash('message', 'Offre supprimée');
 		\Session::flash('alert-class', 'success');
 
-		return redirect()->route('offers.index');
+		return redirect()->route('works.index');
 	}
 }
