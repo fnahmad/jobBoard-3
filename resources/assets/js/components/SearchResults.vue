@@ -3,25 +3,27 @@
     <ais-results :stack="true" :results-per-page="5">
       <template slot-scope="{ result }">
         <div class="search-results__card">
-          <div class="card__image">
+          <div class="card__wrapper">
+            <div class="card__image">
 
-          </div>
-          <div class="card__infos">
-            <h3>
-              {{ result.title }}
-              <result-people-count :count="result.people"></result-people-count>
-            </h3>
-            <p>{{ result.content }}</p>
-          </div>
-          <div class="card__more">
-            <result-date v-if="result.start_at" :start="result.start_at" :end="result.end_at"></result-date>
-            <p class="result-budget" v-if="result.budget">
-              {{budgetFormat(result.budget)}}€
-            </p>
-            <div class="contact__clipboards">
-              <h4>{{result.contact_name}}</h4>
-              <result-clipboard v-if="result.contact_email" :label="result.contact_email"></result-clipboard>
-              <result-clipboard v-if="result.contact_phone" :label="phoneFormat(result.contact_phone)"></result-clipboard>
+            </div>
+            <div class="card__infos">
+              <h3>
+                {{ result.title }}
+                <result-people-count :count="result.people"></result-people-count>
+              </h3>
+              <p>{{ result.content }}</p>
+            </div>
+            <div class="card__more">
+              <result-date v-if="result.start_at" :start="result.start_at" :end="result.end_at"></result-date>
+              <p class="result-budget" v-if="result.budget">
+                {{budgetFormat(result.budget)}}€
+              </p>
+              <div class="contact__clipboards">
+                <h4>{{result.contact_name}}</h4>
+                <result-clipboard v-if="result.contact_email" :label="result.contact_email"></result-clipboard>
+                <result-clipboard v-if="result.contact_phone" :label="phoneFormat(result.contact_phone)"></result-clipboard>
+              </div>
             </div>
           </div>
           <ul class="card__skills" v-if="result.skills.length > 0">
@@ -81,13 +83,15 @@ export default {
     margin-bottom: 20px;
     background: var(--white);
     box-shadow: 0px 5px 10px rgba(0, 0, 0, .05);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     font-size: 1.6rem;
-    @media (min-width: 500px) {
-      flex-direction: row;
-    }    
+    .card__wrapper{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      @media (min-width: 500px) {
+        flex-direction: row;
+      }
+    }
     .card__image{
       width: 100%;
       height: 150px;
