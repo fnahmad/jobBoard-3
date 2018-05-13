@@ -19,13 +19,13 @@ export default {
         }) 
     },
     async _$edit (payload) {
-      await axios.patch(`/api/${this.namespace}`, payload)
+      return axios.patch(`/api/${this.namespace}/${payload.id}`, payload)
     },
     async _$fetch ({id}) {
       await axios.get(`/api/${this.namespace}/${id}`)
     },
-    async _$editHelper (data) {
-      this.$modal.show(`bo_${this.namespace}`, {data})
+    async _$editHelper (data, callback) {
+      this.$modal.show(`bo`, {data, callback})
     }
   }
 }
