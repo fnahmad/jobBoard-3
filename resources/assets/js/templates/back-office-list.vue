@@ -15,7 +15,7 @@
               class="table-tbody-td--action"
               v-for="({name, func}) in actions"
               :key="name"
-              @click="callAction(func.bind(null, result), refreshResults.bind(this))">
+              @click="callAction(func.bind(null, result, refreshResults.bind(this)), refreshResults.bind(this))">
               {{ name }}
             </td>
           </tr>

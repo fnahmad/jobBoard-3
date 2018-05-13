@@ -36,6 +36,6 @@ class HomeController extends Controller{
 			'totalUsers' => $totalUsers,
 		];
 
-		return view('admin.home')->with(['stats' => $stats]);
+		return view('admin.home')->with(['stats' => json_encode($stats)]);
 	}
 }
