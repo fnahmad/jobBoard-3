@@ -24,8 +24,8 @@ export default {
       type: Object,
       default: () => ({
           name: { 
-            label: 'lol',
-            placeholder: 'mdr',
+            label: 'Label',
+            placeholder: 'Contenu',
             type: 'text'
           },
         }),
