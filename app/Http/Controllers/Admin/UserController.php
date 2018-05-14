@@ -63,7 +63,6 @@ class UserController extends Controller{
 			'email'     => 'required|unique:users',
 			'promo'     => 'string|max:4',
 			'phone'     => 'nullable|string|max:255',
-			'password'  => 'required|string|min:6|confirmed'
 		];
 		$validator = Validator::make($request->all(), $validations);
 
