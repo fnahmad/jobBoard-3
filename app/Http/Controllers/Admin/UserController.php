@@ -60,7 +60,7 @@ class UserController extends Controller{
 		$validations = [
 			'firstname' => 'required|string|max:255',
 			'lastname'  => 'required|string|max:255',
-			'email'     => 'required|unique:users|regex:/([a-z\-]+).([a-z\-]+)@hetic.net/i',
+			'email'     => 'required|unique:users',
 			'promo'     => 'string|max:4',
 			'phone'     => 'nullable|string|max:255',
 			'password'  => 'required|string|min:6|confirmed'
