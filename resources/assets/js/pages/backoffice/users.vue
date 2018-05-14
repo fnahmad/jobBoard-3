@@ -51,6 +51,10 @@ export default {
         phone: {
           label: 'Téléphone',
           type: 'tel'
+        },
+        is_confirmed: {
+          label: 'Confirmé ?',
+          type: 'number'
         }
       },
       namespace: 'users',
