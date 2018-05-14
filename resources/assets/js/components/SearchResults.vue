@@ -1,6 +1,6 @@
 <template>
   <div class="search-results">
-    <ais-results :stack="true" :results-per-page="5">
+    <ais-results :stack="true" :results-per-page="10">
       <template slot-scope="{ result }">
         <div class="search-results__card">
           <div class="card__wrapper">
