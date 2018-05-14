@@ -60,7 +60,7 @@ class UserController extends Controller{
 		$validations = [
 			'firstname' => 'required|string|max:255',
 			'lastname'  => 'required|string|max:255',
-			'email'     => 'required|unique:users',
+			'email'     => 'required',
 			'promo'     => 'string|max:4',
 			'phone'     => 'nullable|string|max:255',
 		];
