@@ -53,10 +53,6 @@ export default {
           label: 'Téléphone',
           type: 'tel'
         },
-        is_confirmed: {
-          label: 'Confirmé ?',
-          type: 'text'
-        },
       },
       namespace: 'users',
       title: 'Utilisateurs',
