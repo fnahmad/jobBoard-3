@@ -68,7 +68,7 @@
 				       value="{{ old('end_at') }}">
 			</div>
 			<div class="form-group">
-				<label for="content">Détail</label>
+				<label for="content">Détails</label>
 				<textarea name="content" id="content" cols="30" rows="10"
 				          class="form-control">{{ old('content') }}</textarea>
 			</div>
