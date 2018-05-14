@@ -20,6 +20,7 @@ class User extends Authenticatable{
 		'email',
 		'password',
 		'promo',
+		'is_confirmed',
 		'phone',
 		'email',
 		'is_admin',
