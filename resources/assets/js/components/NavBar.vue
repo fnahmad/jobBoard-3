@@ -1,9 +1,12 @@
 <template>
   <div class="nav-bar">
+    <a href="/user" >
+        Profil
+    </a>
     <a :href="logout" @click="submit">
         Déconnexion
     </a>
-    <a href="https://jobboard.etiennefontaine.fr/works/new" class="button">
+    <a href="/works/new" class="button">
         Nouvelle Offre
     </a>
     <form ref="logoutForm" :action="logout" method="POST"></form>
@@ -34,6 +37,7 @@ export default {
     a{
       font-size: 1.6rem;
       color: #ffffff;
+      margin: 0 20px;
     }
     .button{
       margin-left: 30px;

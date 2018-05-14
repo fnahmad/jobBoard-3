@@ -7,12 +7,12 @@
 					<div class="card-header">Profil{{ $user->id_admin ? ' - Admin':'' }}</div>
 					@if ((isset($errors) && $errors && count($errors) > 0) || Session::has('message'))
 						<div class="alert {{ Session::has('alert-class') ? 'alert-'.Session::get('alert-class') : '' }}">
-							<ul class="container">
+							<ul class="errors">
 								@if(Session::has('message'))
-									<li>{{ Session::get('message') }}</li>
+									<li class="errors-item">{{ Session::get('message') }}</li>
 								@endif
 								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
+									<li class="errors-item danger">{{ $error }}</li>
 								@endforeach
 							</ul>
 						</div>
