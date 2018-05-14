@@ -27,7 +27,6 @@ export default {
         id: 'id',
         firstname: 'Prénom',
         lastname: 'Nom',
-        is_confirmed: 'Confirmé ?',
         promo: 'Promo',
         updated_at: 'Mis à jour le'
       },
@@ -52,6 +51,10 @@ export default {
         phone: {
           label: 'Téléphone',
           type: 'tel'
+        },
+        is_confirmed: {
+          label: 'Confirmé ?',
+          type: 'text'
         },
       },
       namespace: 'users',
