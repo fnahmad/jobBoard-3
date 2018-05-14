@@ -83,6 +83,7 @@ class UserController extends Controller{
 			];
 			return response()->json($messages, 404);
 		}
+		$data = $request->all();
 		$user->fill($data);
 		$user->save();
 
