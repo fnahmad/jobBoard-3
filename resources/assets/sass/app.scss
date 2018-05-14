@@ -12,3 +12,16 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.errors {
+  &-item {
+    list-style: none;
+    height: 50px;
+    background-color: #fff;
+    margin: 10px 0;
+    border-radius: 4px;
+    line-height: 50px;
+    padding-left: 20px;
+    border-bottom: 2px solid #dc3545;
+  }
+}

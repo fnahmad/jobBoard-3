@@ -6,7 +6,18 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
-
+                @if ((isset($errors) && $errors && count($errors) > 0) || Session::has('message'))
+                    <div class="alert {{ Session::has('alert-class') ? 'alert-'.Session::get('alert-class') : '' }}">
+                        <ul class="errors">
+                            @if(Session::has('message'))
+                                <li class="errors-item">{{ Session::get('message') }}</li>
+                            @endif
+                            @foreach ($errors->all() as $error)
+                                <li class="errors-item danger">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

@@ -24,7 +24,6 @@ class HomeController extends Controller{
 
 		// Get new offers of the week
 		$offersThisWeek = Work::where('created_at', '>', Carbon::now()->startOfWeek())
-													->where('created_at', '<', Carbon::now())
 													->count();
 
 		// Get Total users

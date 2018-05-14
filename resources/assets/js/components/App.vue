@@ -47,7 +47,6 @@ export default {
     },
     methods:{
         loadmore(){
-            console.log('loadmore')
             ++this.page
         }
     }
