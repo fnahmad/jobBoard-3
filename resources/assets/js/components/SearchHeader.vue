@@ -8,6 +8,7 @@
             </ais-stats>
         </h1>
         <ais-input placeholder="Rechercher une techno"></ais-input>
+        <ais-powered-by></ais-powered-by>
     </header>
 </template>
 
@@ -52,6 +53,9 @@
                 color: rgba(#000, .3);
 
             }
+        }
+        .ais-powered-by {
+            margin-top: 10px;
         }
     }
 
