@@ -23,7 +23,7 @@
     .search-header{
         width: 100%;
         height: 300px;
-        background: linear-gradient(to right, #da4453, #89216b);
+        background: #dc3545;
         display: flex;
         justify-content: center;
         align-items: center;
