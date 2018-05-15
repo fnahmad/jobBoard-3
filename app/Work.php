@@ -37,8 +37,8 @@ class Work extends Model{
 		return $this->belongsToMany('App\Skill', 'work_skill', 'work_id', 'skill_id');
 	}
 
-	public function users() {
-		return $this->belongsToMany('App\User');
+	public function user() {
+		return $this->belongsTo('App\User');
 	}
 
 
@@ -54,6 +54,7 @@ class Work extends Model{
 	public function toSearchableArray() {
 		$array           = $this->toArray();
 		$array['skills'] = $this->skills()->get()->pluck('name');
+		$array['user'] = $this->user()->first();
 
 		return $array;
 	}

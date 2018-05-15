@@ -20,7 +20,7 @@
                 {{budgetFormat(result.budget)}}€
               </p>
               <div class="contact__clipboards">
-                <h4>{{result.contact_name}}</h4>
+                <h4>{{result.contact_name}} <span v-if="result.user">by {{ result.user.firstname }} {{ result.user.lastname }}</span></h4>
                 <result-clipboard v-if="result.contact_email" :label="result.contact_email"></result-clipboard>
                 <result-clipboard v-if="result.contact_phone" :label="phoneFormat(result.contact_phone)"></result-clipboard>
               </div>
