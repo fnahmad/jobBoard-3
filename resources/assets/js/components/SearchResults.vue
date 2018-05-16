@@ -20,7 +20,7 @@
                 {{budgetFormat(result.budget)}}€
               </p>
               <div class="contact__clipboards">
-                <h4>{{result.contact_name}} <span v-if="result.user">by {{ result.user.firstname }} {{ result.user.lastname }}</span></h4>
+                <h4>{{result.contact_name}} <span class="user-name" v-if="result.user">by {{ result.user.firstname }} {{ result.user.lastname }}</span></h4>
                 <result-clipboard v-if="result.contact_email" :label="result.contact_email"></result-clipboard>
                 <result-clipboard v-if="result.contact_phone" :label="phoneFormat(result.contact_phone)"></result-clipboard>
               </div>
@@ -76,6 +76,12 @@ export default {
 <style lang="scss">
 .search-results{
   flex-grow: 2;
+
+  .user {
+    &-name {
+      color: #ff5a61;
+    }
+  }
   
   &__card{
     width: 100%;
@@ -95,7 +101,7 @@ export default {
     .card__image{
       width: 100%;
       height: 150px;
-      background: linear-gradient(to right, #da4453, #89216b);
+      background: #dee2e6;
       flex-shrink: 0;
       @media (min-width: 500px) {
         width: 150px;

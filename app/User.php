@@ -37,6 +37,19 @@ class User extends Authenticatable{
 		'remember_token',
 	];
 
+
+	/**
+	 * Get the indexable data array for the model.
+	 *
+	 * @return array
+	 */
+	public function toSearchableArray() {
+		$array           = $this->toArray();
+		$array['is_confirmed'] = $array['is_confirmed'] === 0 ? 0 : 1;
+
+		return $array;
+	}
+
 	public function worksOwner() {
 		return $this->hasMany('App\Work', 'user_id', 'id');
 	}
