@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+	@include('partials.nav')
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
@@ -36,7 +37,7 @@
 							<label for="phone">Téléphone</label>
 							<input type="tel" class="form-control" name="phone" value="{{ $user->phone }}">
 						</div>
-						<button type="submit">Valider</button>
+						<button class="btn-submit" type="submit">Valider</button>
 					</form>
 				</div>
 			</div>
