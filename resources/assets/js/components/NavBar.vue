@@ -1,5 +1,8 @@
 <template>
   <div class="nav-bar">
+    <a href="/works">
+        Offres
+    </a>
     <a href="/user" >
         Profil
     </a>

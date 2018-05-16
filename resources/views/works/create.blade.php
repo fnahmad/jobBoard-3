@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+	@include('partials.nav')
 	<div class="container">
 		<h1>Ajouter une offre</h1>
 		@if ((isset($errors) && $errors && count($errors) > 0) || Session::has('message'))
@@ -72,7 +73,7 @@
 				<textarea name="content" id="content" cols="30" rows="10"
 				          class="form-control">{{ old('content') }}</textarea>
 			</div>
-			<button type="submit">Valider</button>
+			<button class="btn-submit" type="submit">Valider</button>
 		</form>
 	</div>
 @endsection
