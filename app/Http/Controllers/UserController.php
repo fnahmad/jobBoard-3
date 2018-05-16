@@ -26,8 +26,8 @@ class UserController extends Controller{
 			'promo'     => 'string|max:4',
 			'phone'     => 'nullable|string|max:255'
 		]);
-
-		$user->fill($request->all());
+		$data = $request->all();
+		$user->fill($data);
 		$user->save();
 
 		\Session::flash('message', 'Mis à jour');
